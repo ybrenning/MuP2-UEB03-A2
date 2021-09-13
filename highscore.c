@@ -8,7 +8,7 @@
 #include "highscore.h"
 
 HSEntry *read_HS(const char *filename) {
-    char entry[255];
+    char line[255];
 
     // Allocating memory for HSEntries and corresponding error handling
     HSEntry *list = (HSEntry *) malloc(HS_SIZE * sizeof(HSEntry));
@@ -23,7 +23,8 @@ HSEntry *read_HS(const char *filename) {
         for (int i = 0; i < HS_SIZE; i++) {
             strcpy(list[i].name, "");
             list[i].points = 0;
-        }
+        } fopen("highscores.txt", "ab");
+
         return list;
     }
 
@@ -34,23 +35,23 @@ HSEntry *read_HS(const char *filename) {
             strcpy(list[i].name, "");
             list[i].points = 0;
         }
+
         return list;
     } ungetc(c, file);
 
     // Reading entries from file
     int i = 0;
-    while (fgets(entry, sizeof(entry), file) != NULL) {
+    while (fgets(line, sizeof(line), file) != NULL) {
         if (i >= HS_SIZE) break;
-        sscanf(entry, "%s - %d", list[i].name, &list[i].points);
-        // printf("Just read:\t %s - %d\n", list[i].name, list[i].points);
+        sscanf(line, "%*u %s %d", list[i].name, &list[i].points);
         i++;
     }
 
     // Replacing leftover empty entries
     if (i < HS_SIZE) {
-        for (i; i < HS_SIZE; i++) {
-            strcpy(list[i].name, "");
-            list[i].points = 0;
+        for (int j = i; j < HS_SIZE; j++) {
+            strcpy(list[j].name, "");
+            list[j].points = 0;
         }
     }
 
@@ -65,24 +66,25 @@ void write_HS(const char *filename, const HSEntry *list) {
         exit(1);
     }
 
-    for (int j = 0; j < HS_SIZE; j++) {
-        fprintf(file, "%s - %d\n", list[j].name, list[j].points);
+    int i = 0;
+    while (i < HS_SIZE && strcmp(list[i].name, "") != 0) {
+        fprintf(file, "%-5d %-25s %10d\n", i + 1, list[i].name, list[i].points);
+        i++;
     }
-
 }
 
 bool is_new_entry(const HSEntry *list, int points) {
-    int k = 0;
-    while (strcmp(list[k].name, "") != 0) {
-        k++;
-    }
-    k--;
-    if (list[k].points < points) {
+    int i = 0;
+    while (strcmp(list[i].name, "") != 0) {
+        i++;
+    } i--;
+    if (list[i].points < points) {
         return true;
     } else return false;
 }
 
 int compare_entries(const void *entry_1, const void *entry_2) {
+    // Comparison function for the quicksort algorithm
     HSEntry *e1 = (HSEntry *) entry_1;
     HSEntry *e2 = (HSEntry *) entry_2;
     return (e2->points - e1->points);
@@ -90,21 +92,21 @@ int compare_entries(const void *entry_1, const void *entry_2) {
 
 void add_entry(HSEntry *list, const char *name, int points) {
     if (is_new_entry(list, points)) {
-        int l = 0;
-        while (strcmp(list[l + 1].name, "") != 0) {
-            l++;
-        }
-        if (l == HS_SIZE) {
-            l--;
-        }
-        strcpy(list[l].name, name);
-        list[l].points = points;
+        int i = 0;
+        while (strcmp(list[i + 1].name, "") != 0) i++;
+        if (i == HS_SIZE) i--;
+
+        strcpy(list[i].name, name);
+        list[i].points = points;
     }
+
     qsort(list, HS_SIZE, sizeof(HSEntry), compare_entries);
 }
 
 void print_HS(const HSEntry *list) {
-    for (int m = 0; m < HS_SIZE; m++){
-        printf("Name: %s --- Points: %d\n", list[m].name, list[m].points);
+    int i = 0;
+    while (i < HS_SIZE && strcmp(list[i].name, "") != 0) {
+        printf("%-5d %-25s %10d\n", i + 1, list[i].name, list[i].points);
+        i++;
     }
 }

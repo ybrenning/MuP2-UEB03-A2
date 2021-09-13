@@ -85,7 +85,6 @@ int gaming_loop(const char *solution) {
 
     printf("RICHTIG!\n");
     free(riddle);
-
     return *ptr_total;
 }
 
@@ -107,6 +106,7 @@ void start_game() {
         char name[50];
         printf("\nDu hast einen HIGHSCORE! Gebe bitte deinen Namen an:\n");
         scanf("%s", name);
+        printf("Neue Highscore-Tabelle:\n");
 
         add_entry(hs_list, name, total_points);
         write_HS(HS_FILE, hs_list);
