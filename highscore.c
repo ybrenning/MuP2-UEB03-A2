@@ -24,7 +24,6 @@ HSEntry *read_HS(const char *filename) {
             strcpy(list[i].name, "");
             list[i].points = 0;
         } fopen("highscores.txt", "ab");
-
         return list;
     }
 
@@ -35,7 +34,6 @@ HSEntry *read_HS(const char *filename) {
             strcpy(list[i].name, "");
             list[i].points = 0;
         }
-
         return list;
     } ungetc(c, file);
 
@@ -54,7 +52,6 @@ HSEntry *read_HS(const char *filename) {
             list[j].points = 0;
         }
     }
-
     fclose(file);
     return list;
 }

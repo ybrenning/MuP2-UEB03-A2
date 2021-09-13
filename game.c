@@ -29,8 +29,8 @@ char *create_riddle(char const *const str) {
         else riddle[i] = str[i];
         i++;
     }
-    riddle[strlen(str)] = '\0';
 
+    riddle[strlen(str)] = '\0';
     return riddle;
 }
 

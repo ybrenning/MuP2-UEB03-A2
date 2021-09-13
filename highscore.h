@@ -9,9 +9,10 @@
 
 #define HS_SIZE 10
 #define HS_FILE "highscores.txt"
+#define NAME_LEN 20
 
 typedef struct {
-    char name[20];
+    char name[NAME_LEN];
     int32_t points;
 } HSEntry;
 
