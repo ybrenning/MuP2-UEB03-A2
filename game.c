@@ -9,11 +9,6 @@
 #include "highscore.h"
 #include "riddles.h"
 
-int main() {
-    start_game();
-    return 0;
-}
-
 char *create_riddle(char const *const str) {
     // Memory allocation for the riddle string on the heap
     char *riddle = (char *) malloc(strlen(str) * sizeof(char));

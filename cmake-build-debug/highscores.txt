@@ -4,7 +4,7 @@
 4     Sabine                         10000
 5     Karin                           9000
 6     Susanne                         8900
-7     Maja                            7700
-8     Jonas                           3000
-9     Kevin                           2800
-10    Torsten                         2000
+7     Franz                           8400
+8     Maja                            7700
+9     Jonas                           3000
+10    Kevin                           2800
