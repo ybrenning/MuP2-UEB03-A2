@@ -1,5 +1,11 @@
+/**
+ * @file main.c
+ * @author Yannick Brenning
+ * @date 01.09.2021
+ * @brief Starts the game
+ */
+
 #include "game.h"
-#include "highscore.h"
 
 int main() {
     start_game();

@@ -1,3 +1,10 @@
+/**
+ * @file game.h
+ * @author Yannick Brenning
+ * @date 01.09.2021
+ * @brief Header file for the main game
+ */
+
 #ifndef GAME_H
 #define GAME_H
 

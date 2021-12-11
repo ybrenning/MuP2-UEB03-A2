@@ -1,3 +1,10 @@
+/**
+ * @file riddles.h
+ * @author Yannick Brenning
+ * @date 01.09.2021
+ * @brief List of riddle  solutions
+ */
+
 #ifndef RIDDLES_H
 #define RIDDLES_H
 

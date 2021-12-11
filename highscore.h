@@ -1,3 +1,10 @@
+/**
+ * @file highscore.h
+ * @author Yannick Brenning
+ * @date 01.09.2021
+ * @brief Highscore header file
+ */
+
 #ifndef HIGHSCORE_H
 #define HIGHSCORE_H
 

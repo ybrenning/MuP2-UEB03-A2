@@ -1,8 +1,8 @@
 /**
- * File Name: game.c
- * Author: Yannick Brenning
- * Date: 01.09.2021
- * Description: SoSe-21 MuP2 UEB03 A2
+ * @file game.c
+ * @author Yannick Brenning
+ * @date 01.09.2021
+ * @brief Runs the main riddles game
  */
 
 #include "game.h"
